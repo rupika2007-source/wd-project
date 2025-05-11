@@ -1,0 +1,256 @@
+
+<!-- saved from url=(0055)file:///C:/Users/admin/Downloads/JSFUNCTIONS%20(1).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>Name : Rupika chalamalla 
+Section: B
+
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All HTML Features</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    h2 {
+      color: #2980b9;
+    }
+    input, button, select {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+    }
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    #bulb {
+      width: 50px;
+      height: 100px;
+    }
+    #counter {
+      font-size: 50px;
+      font-weight: bold;
+      margin: 20px;
+    }
+    .increase { background-color: green; color: white; }
+    .decrease { background-color: red; color: white; }
+    .reset { background-color: gray; color: white; }
+    .increase:hover, .decrease:hover, .reset:hover { opacity: 0.8; }
+  </style>
+
+
+  <h1>All HTML Features in One Page</h1>
+
+  <div class="grid-container">
+
+    <!-- 1. Button Color Toggle -->
+    <section>
+      <h2>1. Button Color Toggle</h2>
+      <button class="btn" onclick="this.style.backgroundColor = this.style.backgroundColor === &#39;green&#39; ? &#39;red&#39; : &#39;green&#39;">Toggle Color</button>
+    </section>
+
+    <!-- 2. Variables & Data Types -->
+    <section>
+      <h2>2. Variables &amp; Data Types</h2>
+      <p>Check the console for variable output.</p>
+      <script>
+        const str = "Hello";
+        let num = 42;
+        var bool = true;
+        console.log("String:", str, "Number:", num, "Boolean:", bool);
+      </script>
+    </section>
+
+    <!-- 3. Simple Calculator -->
+    <section>
+      <h2>3. Simple Calculator</h2>
+      <input id="num1" type="number" placeholder="First number">
+      <input id="num2" type="number" placeholder="Second number">
+      <select id="operator">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+      </select>
+      <button class="btn" onclick="calculate()">Calculate</button>
+      <p id="calcResult"></p>
+      <script>
+        function calculate() {
+          const a = parseFloat(document.getElementById("num1").value);
+          const b = parseFloat(document.getElementById("num2").value);
+          const op = document.getElementById("operator").value;
+          let result = 0;
+          if (op === "+") result = a + b;
+          else if (op === "-") result = a - b;
+          else if (op === "*") result = a * b;
+          else if (op === "/") result = a / b;
+          document.getElementById("calcResult").innerText = `Result: ${result}`;
+        }
+      </script>
+    </section>
+
+    <!-- 4. Digital Clock -->
+    <section>
+      <h2>4. Digital Clock</h2>
+      <h3 id="clock">4:03:49 pm</h3>
+      <script>
+        setInterval(() => {
+          document.getElementById("clock").innerText = new Date().toLocaleTimeString();
+        }, 1000);
+      </script>
+    </section>
+
+    <!-- 5. Light Bulb Toggle -->
+    <section>
+      <h2>5. Light Bulb Toggle</h2>
+      <img id="bulb" src="./index_files/pic_bulboff.gif">
+      <br>
+      <button class="btn" onclick="toggleBulb()">Toggle Bulb</button>
+      <script>
+        let isOn = false;
+        function toggleBulb() {
+          isOn = !isOn;
+          document.getElementById("bulb").src = isOn
+            ? "https://www.w3schools.com/js/pic_bulbon.gif"
+            : "https://www.w3schools.com/js/pic_bulboff.gif";
+        }
+      </script>
+    </section>
+
+    <!-- 6. Show/Hide Password -->
+    <section>
+      <h2>6. Show/Hide Password</h2>
+      <input type="password" id="pwd" placeholder="Enter password">
+      <button class="btn" onclick="togglePassword()">Show/Hide</button>
+      <script>
+        function togglePassword() {
+          const pwd = document.getElementById("pwd");
+          pwd.type = pwd.type === "password" ? "text" : "password";
+        }
+      </script>
+    </section>
+
+    <!-- 7. Registration Form -->
+    <section>
+      <h2>7. Registration Form</h2>
+      <form onsubmit="event.preventDefault(); alert(&#39;Registered!&#39;);">
+        <input type="text" placeholder="Name" required="">
+        <input type="email" placeholder="Email" required="">
+        <button class="btn" type="submit">Register</button>
+      </form>
+    </section>
+
+    <!-- 8. Journal App -->
+    <section>
+      <h2>8. Journal App</h2>
+      <textarea id="journal" placeholder="Write something..."></textarea>
+      <button class="btn" onclick="saveJournal()">Save</button>
+      <p id="savedText"></p>
+      <script>
+        function saveJournal() {
+          const entry = document.getElementById("journal").value;
+          document.getElementById("savedText").innerText = `Saved: ${entry}`;
+        }
+      </script>
+    </section>
+
+    <!-- 9. User Preferences -->
+    <section>
+      <h2>9. User Preferences</h2>
+      <label>Select Theme:
+        <select onchange="changeTheme(this.value)">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+      <script>
+        function changeTheme(theme) {
+          document.body.style.background = theme === "dark"
+            ? "#222"
+            : "linear-gradient(to right, #ffecd2, #fcb69f)";
+          document.body.style.color = theme === "dark" ? "#eee" : "#333";
+        }
+      </script>
+    </section>
+
+    <!-- 10. Feedback Form -->
+    <section>
+      <h2>10. Feedback Form</h2>
+      <textarea id="feedback" placeholder="Your feedback..."></textarea>
+      <button class="btn" onclick="submitFeedback()">Submit</button>
+      <p id="feedbackMessage"></p>
+      <script>
+        function submitFeedback() {
+          const feedback = document.getElementById("feedback").value;
+          document.getElementById("feedbackMessage").innerText = `Thanks for your feedback: ${feedback}`;
+        }
+      </script>
+    </section>
+
+    <!-- 11. Placeholder -->
+    <section>
+      <h2>11. Placeholder Section</h2>
+      <p>More features coming soon!</p>
+    </section>
+
+    <!-- 12. Counter App -->
+    <section>
+      <h2>12. Counter App</h2>
+      <div id="counter">0</div>
+      <button class="increase" onclick="increaseCounter()">Increase</button>
+      <button class="decrease" onclick="decreaseCounter()">Decrease</button>
+      <button class="reset" onclick="resetCounter()">Reset</button>
+      <script>
+        let count = 0;
+        function increaseCounter() {
+          count++;
+          document.getElementById("counter").innerHTML = count;
+        }
+        function decreaseCounter() {
+          count--;
+          document.getElementById("counter").innerHTML = count;
+        }
+        function resetCounter() {
+          count = 0;
+          document.getElementById("counter").innerHTML = count;
+        }
+      </script>
+    </section>
+
+  </div>
+
+
+</body></html>
